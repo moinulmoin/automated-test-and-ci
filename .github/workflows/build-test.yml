@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,6 +30,7 @@ jobs:
       - run: pnpm test
         name: Run tests
   build:
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
