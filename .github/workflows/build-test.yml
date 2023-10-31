@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Automated Tests
 
 on:
   push:
@@ -9,7 +9,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [18]
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -23,3 +25,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - run: pnpm test
+      - run: pnpm build
