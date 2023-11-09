@@ -38,6 +38,7 @@ export default defineConfig({
         "**/coverage/**",
       ],
       all: true,
+      reportOnFailure: true,
     },
   },
 });
