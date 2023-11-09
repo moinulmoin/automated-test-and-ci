@@ -11,6 +11,33 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      test: path.resolve(__dirname, "./test"),
+    },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: path.resolve(__dirname, "./test/setup.ts"),
+    environmentMatchGlobs: [
+      ["**/*.test.tsx", "jsdom"],
+      ["**/*.component.test.ts", "jsdom"],
+    ],
+    coverage: {
+      provider: "v8",
+      statements: 77.41,
+      thresholdAutoUpdate: true,
+      include: ["src/**/*"],
+      exclude: [
+        "test/**",
+        "vite.*.ts",
+        "**/*.d.ts",
+        "**/*.test.*",
+        "**/*.config.*",
+        "**/snapshot-tests/**",
+        "**/*.solution.tsx",
+        "**/coverage/**",
+      ],
+      all: true,
     },
   },
 });
